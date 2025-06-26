@@ -42,16 +42,16 @@ This project uses the [Rossmann Store Sales dataset](https://www.kaggle.com/comp
 - [x] Repository and folder structure setup
 - [x] Dataset download and preprocessing
 - [x] Exploratory data analysis
-- [ ] Feature engineering
-- [ ] Baseline model creation
-- [ ] Hyperparameter tuning and evaluation
-- [ ] MLflow experiment tracking
-- [ ] API deployment with FastAPI
-- [ ] CI/CD setup with GitHub Actions
-- [ ] Docker containerization
-- [ ] Deployment to cloud (GCP or AWS)
-- [ ] Monitoring and retraining pipeline
-- [ ] Business dashboard with Streamlit
+- [x] Feature engineering
+- [x] Baseline model creation
+- [x] Hyperparameter tuning and evaluation
+- [x] MLflow experiment tracking
+- [x] API deployment with FastAPI
+- [x] CI/CD setup with GitHub Actions
+- [x] Docker containerization
+- [x] Deployment to cloud (GCP or AWS)
+- [x] Monitoring and retraining pipeline
+- [x] Business dashboard with Streamlit
 
 ## 📈 Results
 
