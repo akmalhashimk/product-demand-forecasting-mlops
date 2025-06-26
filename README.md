@@ -53,16 +53,6 @@ This project uses the [Rossmann Store Sales dataset](https://www.kaggle.com/comp
 - [x] Monitoring and retraining pipeline
 - [x] Business dashboard with Streamlit
 
-## 📈 Results
-
-| Metric | Value     |
-|--------|-----------|
-| RMSE   | *To be updated* |
-| MAE    | *To be updated* |
-| R²     | *To be updated* |
-
-> Results will be updated after model training and evaluation.
-
 ## 🧑‍💻 How to Run
 
 ```bash
