@@ -6,6 +6,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 import joblib
 import os
+import mlflow
+import mlflow.xgboost
 
 # Paths
 RAW_TRAIN_PATH = "data/raw/train.csv"
@@ -20,49 +22,45 @@ def load_and_merge_data():
     return data
 
 def preprocess(data):
-    # Drop closed stores
     data = data[data["Open"] != 0]
-
-    # Fill NA
     data.fillna(0, inplace=True)
 
-    # Extract date features
     data["Year"] = data["Date"].dt.year
     data["Month"] = data["Date"].dt.month
     data["Day"] = data["Date"].dt.day
     data["DayOfWeek"] = data["Date"].dt.dayofweek
 
-    # Drop columns not used
     drop_cols = ["Date", "Customers", "Open"]
     data = data.drop(columns=drop_cols, errors='ignore')
-
     return data
 
 def train_model(data):
     X = data.drop(columns=["Sales"])
     y = data["Sales"]
 
-    X_train, X_val, y_train, y_val = train_test_split(
-        X, y, test_size=0.2, random_state=42
-    )
+    X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.2, random_state=42)
 
-    model = xgb.XGBRegressor(n_estimators=100, learning_rate=0.1)
-    model.fit(X_train, y_train)
+    with mlflow.start_run():
+        params = {"n_estimators": 100, "learning_rate": 0.1}
+        mlflow.log_params(params)
 
-    preds = model.predict(X_val)
-    rmse = mean_squared_error(y_val, preds, squared=False)
-    print(f"Validation RMSE: {rmse:.2f}")
+        model = xgb.XGBRegressor(**params)
+        model.fit(X_train, y_train)
 
-    return model
+        preds = model.predict(X_val)
+        rmse = mean_squared_error(y_val, preds, squared=False)
+        mlflow.log_metric("rmse", rmse)
 
-def save_model(model):
-    os.makedirs("models", exist_ok=True)
-    joblib.dump(model, MODEL_PATH)
-    print(f"✅ Model saved to {MODEL_PATH}")
+        # Save model
+        os.makedirs("models", exist_ok=True)
+        joblib.dump(model, MODEL_PATH)
+        mlflow.xgboost.log_model(model, artifact_path="model")
+
+        print(f"✅ Model trained. RMSE: {rmse:.2f}")
+        print("📦 Model logged to MLflow.")
 
 if __name__ == "__main__":
     data = load_and_merge_data()
     data = preprocess(data)
-    model = train_model(data)
-    save_model(model)
-  
+    train_model(data)
+    
