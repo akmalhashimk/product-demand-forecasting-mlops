@@ -31,29 +31,58 @@ Accurately forecast daily sales for Rossmann stores using historical sales data,
 | Monitoring         | Prometheus, Grafana                        |
 | Dashboard          | Streamlit                                  |
 
-## 📁 Project Structure
+## 📊 Dataset
 
-.
-- ├── api/ # FastAPI app for predictions
-- │ ├── main.py
-- │ └── Dockerfile
-- ├── config/ # Configuration files (YAML/JSON)
-- ├── data/
-- │ ├── raw/ # Raw dataset files
-- │ └── processed/ # Cleaned and feature-engineered data
-- ├── dashboards/ # Streamlit dashboard for visual insights
-- ├── mlruns/ # MLflow experiment tracking logs
-- ├── monitoring/ # Scripts for data drift detection and alerts
-- ├── notebooks/ # EDA and experimentation
-- │ └── 01_eda.ipynb
-- ├── pipelines/ # Airflow DAGs and pipeline scripts
-- ├── src/ # Core Python modules
-- │ ├── train.py
-- │ ├── evaluate.py
-- │ ├── predict.py
-- │ └── utils/
-- ├── tests/ # Unit and integration tests
-- ├── .gitignore
-- ├── Dockerfile
-- ├── requirements.txt
-- └── README.md
+This project uses the [Rossmann Store Sales dataset](https://www.kaggle.com/competitions/rossmann-store-sales/data) from Kaggle.
+
+> 📁 The raw dataset files (`train.csv`, `store.csv`, etc.) are not included in this repository. Please download them manually from Kaggle and place them in the `data/raw/` directory.
+
+## 🚀 Roadmap
+
+- [x] Repository and folder structure setup
+- [x] Dataset download and preprocessing
+- [x] Exploratory data analysis
+- [ ] Feature engineering
+- [ ] Baseline model creation
+- [ ] Hyperparameter tuning and evaluation
+- [ ] MLflow experiment tracking
+- [ ] API deployment with FastAPI
+- [ ] CI/CD setup with GitHub Actions
+- [ ] Docker containerization
+- [ ] Deployment to cloud (GCP or AWS)
+- [ ] Monitoring and retraining pipeline
+- [ ] Business dashboard with Streamlit
+
+## 📈 Results
+
+| Metric | Value     |
+|--------|-----------|
+| RMSE   | *To be updated* |
+| MAE    | *To be updated* |
+| R²     | *To be updated* |
+
+> Results will be updated after model training and evaluation.
+
+## 🧑‍💻 How to Run
+
+```bash
+# 1. Clone this repository
+git clone https://github.com/akmalhashimk/product-demand-forecasting-mlops.git
+cd product-demand-forecasting-mlops
+
+# 2. Install dependencies
+pip install -r requirements.txt
+
+# 3. Download the dataset from Kaggle and place the CSV files under:
+#    data/raw/
+
+# 4. Run training script
+python src/train.py
+
+# 5. Start the FastAPI server
+cd api/
+uvicorn main:app --reload
+```
+## 📜 License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
