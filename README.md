@@ -65,15 +65,19 @@ This project uses the [Rossmann Store Sales dataset](https://www.kaggle.com/comp
 
 ## 🧑‍💻 How to Run
 
-```bash
 # 1. Clone this repository
+```bash
 git clone https://github.com/akmalhashimk/product-demand-forecasting-mlops.git
 cd product-demand-forecasting-mlops
+```
 
 # 2. Install dependencies
+```bash
 pip install -r requirements.txt
+```
 
-# 3. Download the dataset from Kaggle and place the CSV files under:
+# 3. Download the dataset from Kaggle
+and place the CSV files under:
 #    data/raw/
 
 # 4. Run training script
