@@ -30,3 +30,30 @@ Accurately forecast daily sales for Rossmann stores using historical sales data,
 | Workflow & CI/CD   | Airflow, GitHub Actions                    |
 | Monitoring         | Prometheus, Grafana                        |
 | Dashboard          | Streamlit                                  |
+
+## 📁 Project Structure
+
+.
+├── api/ # FastAPI app for predictions
+│ ├── main.py
+│ └── Dockerfile
+├── config/ # Configuration files (YAML/JSON)
+├── data/
+│ ├── raw/ # Raw dataset files
+│ └── processed/ # Cleaned and feature-engineered data
+├── dashboards/ # Streamlit dashboard for visual insights
+├── mlruns/ # MLflow experiment tracking logs
+├── monitoring/ # Scripts for data drift detection and alerts
+├── notebooks/ # EDA and experimentation
+│ └── 01_eda.ipynb
+├── pipelines/ # Airflow DAGs and pipeline scripts
+├── src/ # Core Python modules
+│ ├── train.py
+│ ├── evaluate.py
+│ ├── predict.py
+│ └── utils/
+├── tests/ # Unit and integration tests
+├── .gitignore
+├── Dockerfile
+├── requirements.txt
+└── README.md
